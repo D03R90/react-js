@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vadim - React JS Lesson 1-4 </title>
+</head>
+
+<body>
+    <h1>React JS Lesson 1-4</h1>
+    <script>
+        'use strict';
+
+        function* generateSequence() {
+            yield prompt('Как Вас зовут? ', 'Майя');
+            yield prompt('Сколько вам лет? ', '4');
+            return prompt('Где вы родились? ', 'Москва');
+        }
+        let user = {};
+        let generator = generateSequence();
+        user.name = generator.next().value;
+        user.age = generator.next().value;
+        user.town = generator.next().value;
+        console.log(user);
+    </script>
+</body>
+
+</html>
