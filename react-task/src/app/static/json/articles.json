@@ -1,0 +1,19 @@
+{
+  "itemsArticles": [
+    {
+      "title": "Статья 1",
+      "author": "Вадим",
+      "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, suscipit. Ea, incidunt similique, dolorum odit quo cumque nobis itaque eius doloremque, omnis laboriosam dolor quod voluptate fuga nulla. Voluptates, nulla!"
+    },
+    {
+      "title": "Статья 2",
+      "author": "Петя",
+      "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, suscipit. Ea, incidunt similique, dolorum odit quo cumque nobis itaque eius doloremque, omnis laboriosam dolor quod voluptate fuga nulla. Voluptates, nulla!"
+    },
+    {
+      "title": "Статья 3",
+      "author": "Илья",
+      "text": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero, suscipit. Ea, incidunt similique, dolorum odit quo cumque nobis itaque eius doloremque, omnis laboriosam dolor quod voluptate fuga nulla. Voluptates, nulla!"
+    }
+  ]
+}
