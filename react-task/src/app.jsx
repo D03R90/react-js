@@ -1,14 +1,14 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import routes from './routes';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import routes from "./routes";
 
-import Main from "./app/layouts/Main";
-import Index from "./app/pages/Index";
-import Blog from "./app/pages/Blog";
-import Comments from "./app/pages/Comments";
-import Users from "./app/pages/Users";
+import Main from "./layouts/Main";
+import Index from "./pages/Index";
+import Blog from "./pages/Blog";
+import Comments from "./pages/Comments";
+import Users from "./pages/Users";
 
 import store from "./store"; //Объект store
 
