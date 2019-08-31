@@ -1,42 +1,74 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 
-// import Info from './app/components/Info';
-import Modal from "./app/components/Modal";
-import Menu from "./app/components/Menu";
-import Articles from "./app/components/Articles";
-import Login from "./app/components/Login";
+import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import routes from './routes';
+
+import Main from "./app/layouts/Main";
+import Index from "./app/pages/Index";
+import Blog from "./app/pages/Blog";
+import Comments from "./app/pages/Comments";
+import Users from "./app/pages/Users";
+
+import store from "./store"; //Объект store
 
 const app = document.getElementById("app");
 
-class App extends React.Component {
+const items = [
+  { href: "/", title: "Counter", id: "11" },
+  { href: "/comments", title: "Comments", id: "111" }
+];
+// ReactDOM.render(
+//   <Router history={browserHistory}>
+//     <Route path="/" component={Main}>
+//       <IndexRoute component={Index} />
+//       <Route path="blog/" component={Blog} />
+//       <Route path="comments/" component={Comments} />
+//       <Route path="users/" component={Users} />
+//       <Route path="*" component={Error404} />
+//     </Route>
+//   </Router>,
+//   app
+// );
+
+class app extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      comments: []
+    };
+  }
+
+  handleComment = comment => {
+    this.setState(prev => ({
+      ...prev,
+      comments: prev.comments.concat([comment])
+    }));
+  };
+
   render() {
+    const { comments } = this.state;
+
     return (
-      <div>
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-12">
-              <Menu items={itemsMenu} title="Блог" />
-            </div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="row">
-            <Articles items={itemsArticles} />
-          </div>
-        </div>
-        <div className="container">
-          <div className="row">
-            <div className="col-xs-4" />
-            <div className="col-xs-4">
-              <Login />
-            </div>
-            <div className="col-xs-4" />
-          </div>
-        </div>
+      <div className="box">
+        <Menu items={items} />
+
+        <Switch>
+          {routes.map((route, idx) => (
+            <Route key={idx} {...route} />
+          ))}
+        </Switch>
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, app);
+ReactDom.render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>,
+  app
+);
