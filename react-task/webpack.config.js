@@ -1,6 +1,6 @@
 const path = require("path");
-// const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const HtmlPlugin = require("html-webpack-plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -14,7 +14,9 @@ module.exports = {
     extensions: [".js", ".jsx"],
     alias: {
       components: path.resolve(__dirname, "src", "components"),
-      containers: path.resolve(__dirname, "src", "containers")
+      containers: path.resolve(__dirname, "src", "containers"),
+      reducers: path.resolve(__dirname, "src", "reducers"),
+      actions: path.resolve(__dirname, "src", "actions")
     }
   },
   module: {
@@ -28,15 +30,16 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: ["css-loader"]
+        })
       }
     ]
   },
   plugins: [
-    // new ExtractTextPlugin({
-    //     filename: 'style.css'
-    // }),
-    new HtmlPlugin({
+    new ExtractTextPlugin({ filename: "style.css" }),
+    new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "src", "index.html"),
       filename: "index.html"
     })
